@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Marketplace</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        .login, .product-management {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #fff;
+            border-radius: 5px;
+        }
+        input[type='text'], input[type='file'] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px;
+            background-color: #1e90ff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function verifyPIN() {
+            const userPIN = document.getElementById('pin-input').value;
+            if (userPIN === '716441') {
+                document.getElementById('product-management').style.display = 'block';
+                document.getElementById('login').style.display = 'none';
+            } else {
+                alert('Incorrect PIN!');
+            }
+        }
+        
+        function addProduct() {
+            const productName = document.getElementById('product-name').value;
+            const productImage = document.getElementById('product-image').files[0];
+            const instagramLink = document.getElementById('instagram-link').value;
+
+            // Implement product addition logic here
+
+            alert('Product Added: ' + productName);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="login" id="login">
+            <h2>Admin Login</h2>
+            <input type="text" id="pin-input" placeholder="Enter PIN" />
+            <button onclick="verifyPIN()">Login</button>
+        </div>
+        <div class="product-management" id="product-management" style="display:none;">
+            <h2>Product Management</h2>
+            <input type="text" id="product-name" placeholder="Product Name" required />
+            <input type="file" id="product-image" required />
+            <input type="text" id="instagram-link" placeholder="Instagram Link" />
+            <button onclick="addProduct()">Add Product</button>
+        </div>
+    </div>
+</body>
+</html>
